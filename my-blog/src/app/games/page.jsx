@@ -1,4 +1,5 @@
 import { client } from "../../sanity/client";
+import { urlFor } from "../../sanity/imageURL";
 
 export default async function GamesPage() {
   const games = await client.fetch(
@@ -16,7 +17,7 @@ export default async function GamesPage() {
           >
             {game.image && game.image.asset && (
               <img
-                src={game.image.asset.url}
+                src={urlFor(game.image).url()}
                 alt={game.title}
                 className="w-full h-auto rounded"
               />

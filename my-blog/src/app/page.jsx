@@ -1,17 +1,28 @@
 "use client";
 import { useState, useEffect } from "react";
 import { client } from "../sanity/client";
+import { urlFor } from "../sanity/imageURL";
 
 export default function Home() {
   const [mediaItems, setMediaItems] = useState([]);
   const [genreFilter, setGenreFilter] = useState("all");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
-      const data = await client.fetch(
-        `*[_type == "media"] | order(_createdAt desc)`
-      );
-      setMediaItems(data);
+      try {
+        const data = await client.fetch(
+          `*[_type == "media"] | order(_createdAt desc)`
+        );
+        console.log("Fetched media data:", data);
+        setMediaItems(data);
+      } catch (err) {
+        console.error("Error fetching media:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
     }
     fetchData();
   }, []);
@@ -21,6 +32,14 @@ export default function Home() {
       ? true
       : item.categories && item.categories.includes(genreFilter)
   );
+
+  if (loading) return <div className="p-8">Loading...</div>;
+  if (error)
+    return (
+      <div className="p-8 text-red-500">Error fetching media: {error}</div>
+    );
+  if (!mediaItems.length)
+    return <div className="p-8">No media items found.</div>;
 
   return (
     <div>
@@ -55,7 +74,7 @@ export default function Home() {
           >
             {item.image && item.image.asset && (
               <img
-                src={item.image.asset.url}
+                src={urlFor(item.image).url()}
                 alt={item.title}
                 className="w-full h-auto rounded"
               />
