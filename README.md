@@ -1,11 +1,11 @@
 # CMS Practice - Next.js & Sanity Integration
 
-This repository demonstrates a headless CMS integration using Next.js for the web application and Sanity for content management. The repository is organized into two main projects:
+Welcome to my CMS Practice project! In this repository, I integrate a headless CMS (Sanity) with a Next.js web application. I built this project to dynamically fetch and display media content (movies and games) using Sanity for content management and Next.js for the frontend. The repository is organized into two main parts:
 
-- **my-blog**: A Next.js web application that fetches and displays media content (movies and games) from Sanity.
-- **studio-my-blog**: A Sanity Studio project used to manage and update the media content.
+- **my-blog**: My Next.js web application that fetches and displays media content from Sanity.
+- **studio-my-blog**: My Sanity Studio project where I manage and update the media content.
 
-Both projects utilize Tailwind CSS for styling and Framer Motion for smooth transitions and animations. The web application is deployed on Vercel, and environment variables are used to securely configure the Sanity client.
+I use Tailwind CSS for styling and Framer Motion for smooth transitions and animations. The web application is deployed on Vercel, and I use environment variables to securely configure the Sanity client.
 
 ## Table of Contents
 
@@ -20,43 +20,32 @@ Both projects utilize Tailwind CSS for styling and Framer Motion for smooth tran
 
 ## Design Choices
 
-- **Responsive Layout**: The Next.js application is built with a mobile-first approach using Tailwind CSS. The navigation adapts for small screens with an animated hamburger menu.
-- **Dynamic Content**: Content for movies and games is managed via Sanity CMS, allowing for real-time updates without redeploying the web application.
-- **Smooth Transitions**: Framer Motion is used for smooth page transitions and animations.
-- **Separation of Concerns**: The web application and the content management system are maintained in separate folders for clarity and maintainability.
+I aimed to create a dynamic media showcase that displays movies and games, with content managed via Sanity. My key design choices included:
+
+- **Responsive Layout:** I built the Next.js application with a mobile-first approach using Tailwind CSS. The navigation adapts to different screen sizes with a hamburger menu on smaller devices.
+- **Dynamic Content:** I fetch content from Sanity, which allows me to update the media without redeploying the site.
+- **Smooth Transitions:** I used Framer Motion to create smooth page transitions and animations, enhancing the overall user experience.
+- **Clean and Minimal UI:** I focused on a simple, modern design that keeps the user experience straightforward and enjoyable.
 
 ## Implementation Approach
 
 ### Frontend (my-blog)
 
-- **Next.js App Router**: Provides file-based routing and server-side rendering.
-- **Tailwind CSS**: Used for utility-first styling and ensuring a responsive design.
-- **Framer Motion**: Enables smooth animations for page transitions and interactive components.
-- **Sanity Integration**: The `next-sanity` client and `@sanity/image-url` are used to fetch and display dynamic media content.
+- I used the Next.js App Router for file-based routing and server-side rendering.
+- I styled the project with Tailwind CSS for a responsive design.
+- I implemented animations using Framer Motion.
+- I integrated Sanity using the `next-sanity` client and `@sanity/image-url` to fetch and display dynamic media content.
 
 ### Headless CMS (studio-my-blog)
 
-- **Sanity CMS**: Manages the content for movies and games.
-- **Schemas**: A unified media schema (or separate schemas if desired) defines the structure for documents, including fields such as title, slug, media type, image, categories, and content.
+- I set up Sanity CMS to manage my media content.
+- I defined a unified media schema (or separate schemas if needed) to structure my documents for movies and games.
+- I used Sanity Studio to add, update, and manage my media content.
 
 ## Setting Up Sanity CMS
 
-1. **Create a Sanity Project**
+1. **Creating the Sanity Project:**  
+   I signed up at [Sanity.io](https://www.sanity.io/) and created a new project (with project ID `y2oj2zi4`). I used the free tier for initial development.
 
-   - Sign up at [Sanity.io](https://www.sanity.io/) and create a new project (e.g., with ID `y2oj2zi4`).
-   - Use the free tier for initial development.
-
-2. **Define Schemas**
-
-   - In `studio-my-blog/schemas/`, create your media schema (for movies and games). For example, a unified schema in `media.js`:
-
-3. **Populate Content**
-   - Run `sanity start` inside the `studio-my-blog` folder to launch Sanity Studio.
-   - Add several documents for movies and games with proper images and categories.
-
-## Integrating Sanity with Next.js
-
-1. **Install Dependencies in my-blog**
-   ```bash
-   npm install next-sanity @sanity/image-url
-   ```
+2. **Defining Schemas:**  
+   In the `studio-my-blog/schemas/` folder, I created a media schema (in `media.js`) to structure my documents.
