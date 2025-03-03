@@ -49,3 +49,62 @@ I aimed to create a dynamic media showcase that displays movies and games, with 
 
 2. **Defining Schemas:**  
    In the `studio-my-blog/schemas/` folder, I created a media schema (in `media.js`) to structure my documents.
+
+### Integrating Sanity with Next.js
+
+1. **Installing Dependencies in my-blog**  
+   Inside my-blog folder, I ran:
+   npm install next-sanity @sanity/image-url
+
+2. **Configuring the Sanity Client**  
+   I created my-blog/src/sanity/client.js and imageURL.js:
+
+3. **Fetching Data in Next.js Pages**  
+   I used GROQ queries in my Next.js pages (e.g., Home, Movies, Games) to dynamically fetch and display content. For example, in my-blog/src/app/page.jsx, I fetch all media items and apply a genre filter.
+
+### Running and Testing Locally
+
+1. **Clone the Repository**  
+   git clone <repository-url>
+   cd cms-practice
+
+2. **Install Dependencies for my-blog**  
+   cd my-blog
+   npm install
+
+3. **Create Environment Variables**  
+   Inside my-blog folder, I ran:
+   NEXT_PUBLIC_SANITY_PROJECT_ID=y2oj2zi4
+   NEXT_PUBLIC_SANITY_DATASET=production
+   NEXT_PUBLIC_SANITY_API_VERSION=2023-03-25
+
+   # For a private dataset, add:
+
+   # NEXT_PUBLIC_SANITY_TOKEN=your_generated_token_here
+
+4. **Run the Development Server**  
+   npm run dev
+
+5. **Run the Development Server**  
+   Checked http://localhost:3000 to ensure that the homepage loads dynamic media content and that filtering works as expected.
+
+### Deployment
+
+1. **eploying my-blog on Vercel**  
+   I connected the my-blog repository to Vercel and added the necessary environment variables in Vercel’s project settings (using the same keys as in my .env.local file). After deploying, I verified that the media content loads correctly in production.
+
+2. **Sanity Studio**  
+   I can run the studio-my-blog project locally for content management or deploy it separately if needed.
+
+### Deployment
+
+Next.js – React framework for server-side rendering and routing.
+Tailwind CSS – Utility-first CSS framework for styling.
+next-sanity – Sanity client for Next.js integration.
+@sanity/image-url – Library to build image URLs from Sanity image objects.
+Framer Motion – Library for smooth animations and transitions.
+
+### Conclusion
+
+This assignment helped me practice on how to integrated a headless CMS with Next.js application.
+By leveraging Sanity for content management and Tailwind CSS for responsive design, I built a dynamic media showcase that displays movies and games with smooth animations and transitions. The separation of the web application (my-blog) and the CMS (studio-my-blog) provides a clean and maintainable folder structure.
