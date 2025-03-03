@@ -39,11 +39,26 @@ export default function Home() {
       <div className="p-8 text-red-500">Error fetching media: {error}</div>
     );
   if (!mediaItems.length)
-    return <div className="p-8">No media items found.</div>;
+    return (
+      <div className="p-8 text-center">
+        <h1 className="text-4xl font-bold">404 - Not Found</h1>
+        <p>Sorry, we couldn&apos;t find any media items.</p>
+      </div>
+    );
 
   return (
     <div>
-      {/* Genre Filter Dropdown */}
+      {/* Welcome Text */}
+      <div className="p-8 text-center">
+        <h1 className="text-3xl font-bold">
+          Welcome to my Movies and Games Suggestions!
+        </h1>
+        <p className="mt-4 text-lg">
+          Just some of the movies and games I 100% recommend!
+        </p>
+      </div>
+
+      {/* Genre Filter Dropdown
       <div className="flex flex-col items-center mt-4">
         <div id="genre-filter-container" className="text-base">
           <label htmlFor="choices" className="mr-2">
@@ -63,7 +78,7 @@ export default function Home() {
             <option value="pvp">PvP</option>
           </select>
         </div>
-      </div>
+      </div> */}
 
       {/* Media Grid */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-8">

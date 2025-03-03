@@ -15,7 +15,7 @@ export default function Navbar() {
   return (
     <header className="bg-black text-white p-4">
       <nav className="flex items-center justify-between">
-        <span className="text-2xl font-bold">Media Showcase</span>
+        <span className="text-2xl font-bold">CMS Practice</span>
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-4">
           <li>
